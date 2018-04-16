@@ -15,18 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
-from django.conf.urls import url, include as conf_include
-from rest_framework import routers
-from rest_demo import views
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+
+API_TITLE = 'Pastebin API'
+API_DESCRIPTION = 'A Web API for creating and viewing highlighted code snippets.'
+schema_view = get_schema_view(title=API_TITLE)
 
 urlpatterns = [
     path('demo/', include('demo.urls')),
     path('admin/', admin.site.urls),
-    url(r'^', conf_include(router.urls)),
-    url(r'^api-auth/', conf_include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^', include('snippets.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^schema/$', schema_view),
+    url(r'^docs/', include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
 ]
