@@ -16,7 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls import url, include as conf_include
+from rest_framework import routers
+from rest_demo import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+
 urlpatterns = [
     path('demo/', include('demo.urls')),
     path('admin/', admin.site.urls),
+    url(r'^', conf_include(router.urls)),
+    url(r'^api-auth/', conf_include('rest_framework.urls', namespace='rest_framework')),
 ]

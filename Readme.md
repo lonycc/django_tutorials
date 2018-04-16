@@ -2,6 +2,8 @@
 
 `pip install django`  #安装django包
 
+`pip install djangorestframework`
+
 `python -m django --version`  #查看django版本
 
 `django-admin startproject mysite`  #创建一个项目
@@ -20,7 +22,7 @@ mysite/
 
 `python manage.py runserver [8080]`  #启动服务器, 可指定端口, 默认8000
 
-`python mange.py startapp demo` #创建demo app, 将会在mysite根目录下创建demo目录
+`python mange.py startapp demo` 或者 `django-admin startapp demo` #创建demo app, 将会在根目录下创建demo目录
 
 demo app目录结构
 
