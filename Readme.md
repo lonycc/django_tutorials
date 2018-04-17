@@ -170,4 +170,4 @@ admin.site.register(Question)
 
 `python mange.py test demo`  #运行测试用例
 
-[django 2.0.* docs](http://python.usyiyi.cn/translate/django2/index.html)
+[django 2.0.* docs](https://yiyibooks.cn/qy/django2/index.html)
